@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS users;
+DROP SEQUENCE IF EXISTS users_id_seq;
+
+CREATE SEQUENCE users_id_seq;
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY DEFAULT nextval('users_id_seq'),
+  name VARCHAR(100) NOT NULL,
+  surname VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  phone VARCHAR(30),
+  age INT,
+  country VARCHAR(100),
+  district VARCHAR(100),
+  role VARCHAR(30),
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
